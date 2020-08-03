@@ -30,14 +30,6 @@ public class LineItem {
 
 	@Override
 	public String toString() {
-//		output.append(lineItem.getDescription());
-//		output.append('\t');
-//		output.append(lineItem.getPrice());
-//		output.append('\t');
-//		output.append(lineItem.getQuantity());
-//		output.append('\t');
-//		output.append(lineItem.totalAmount());
-//		output.append('\n');
 		return this.description + "\t" + this.price + "\t" + this.quantity + "\t" + totalAmount();
 	}
 }
