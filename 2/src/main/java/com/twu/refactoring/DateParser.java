@@ -10,7 +10,6 @@ public class DateParser {
     private static String NOT_INT_ERR_MSG = "%s is not an integer";
     private DATE date_Obj = new DATE();
 
-
     static {
         KNOWN_TIME_ZONES.put("UTC", TimeZone.getTimeZone("UTC"));
     }
@@ -41,23 +40,19 @@ public class DateParser {
         return calendar.getTime();
     }
 
-
     public int checkDateAndGetValue(String dateAndTimeString, String sign){
-        int[] index = new int[2];
-        int[] range = new int[2];
         int date_value = 0;
-
-        date_Obj.setIndexAndRange(index, range, sign);
+        date_Obj.setIndexAndRange(sign);
         try {
-            String dateString = dateAndTimeString.substring(index[0], index[1]);
+            String dateString = dateAndTimeString.substring(date_Obj.index[0], date_Obj.index[1]);
             date_value = Integer.parseInt(dateString);
         } catch (StringIndexOutOfBoundsException e) {
-            throw new IllegalArgumentException(String.format(INDEX_OUT_ERR_MSG, sign, index[1]-index[0]));
+            throw new IllegalArgumentException(String.format(INDEX_OUT_ERR_MSG, sign, date_Obj.index[1]-date_Obj.index[0]));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(String.format(NOT_INT_ERR_MSG, sign));
         }
-        if (date_value < range[0] || date_value > range[1])
-            throw new IllegalArgumentException(String.format(RANGE_ERROR_MSG, sign, range[0], range[1]));
+        if (date_value < date_Obj.range[0] || date_value > date_Obj.range[1])
+            throw new IllegalArgumentException(String.format(RANGE_ERROR_MSG, sign, date_Obj.range[0], date_Obj.range[1]));
 
         return date_value;
     }

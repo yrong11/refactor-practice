@@ -4,7 +4,7 @@ public class DATE {
     public String name;
     public int[] index;
     public int[] range;
-    
+
     public static String MONTH = "Month";
     public static String YEAR = "Year";
     public static String DATE = "Date";
@@ -27,27 +27,28 @@ public class DATE {
         static int[] MINUTE = {0, 59};
     }
 
-    public void setIndexAndRange(int[] index, int[] range, String sign){
-        switch (sign){
+
+    public void setIndexAndRange(String sign) {
+        switch (sign) {
             case "Year":
-                System.arraycopy(DATE_INDEX.YEAR, 0, index, 0, 2);
-                System.arraycopy(DATE_RANGE.YEAR, 0, range, 0, 2);
+                this.index = DATE_INDEX.YEAR;
+                this.range = DATE_RANGE.YEAR;
                 break;
             case "Date":
-                System.arraycopy(DATE_INDEX.DATE, 0, index, 0, 2);
-                System.arraycopy(DATE_RANGE.DATE, 0, range, 0, 2);
+                this.index = DATE_INDEX.DATE;
+                this.range = DATE_RANGE.DATE;
                 break;
             case "Minute":
-                System.arraycopy(DATE_INDEX.MINUTE, 0, index, 0, 2);
-                System.arraycopy(DATE_RANGE.MINUTE, 0, range, 0, 2);
+                this.index = DATE_INDEX.MINUTE;
+                this.range = DATE_RANGE.MINUTE;
                 break;
             case "Month":
-                System.arraycopy(DATE_INDEX.MONTH, 0, index, 0, 2);
-                System.arraycopy(DATE_RANGE.MONTH, 0, range, 0, 2);
+                this.index = DATE_INDEX.MONTH;
+                this.range = DATE_RANGE.MONTH;
                 break;
-            case "Hour" :
-                System.arraycopy(DATE_INDEX.HOUR, 0, index, 0, 2);
-                System.arraycopy(DATE_RANGE.HOUR, 0, range, 0, 2);
+            case "Hour":
+                this.index = DATE_INDEX.HOUR;
+                this.range = DATE_RANGE.HOUR;
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + sign);
